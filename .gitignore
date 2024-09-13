@@ -1,0 +1,15 @@
+venv
+.venv
+py
+.py
+
+.idea
+.DS_Store
+__pycache__
+
+*.egg*
+build
+dist
+
+dev_app
+db.sqlite3
