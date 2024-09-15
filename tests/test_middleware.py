@@ -1,7 +1,7 @@
+import pytest
+
 from django.test import Client
 from django.urls import reverse
-
-import pytest
 
 
 def test_exception_if_debug_is_false(client):
@@ -25,8 +25,6 @@ def test_request_delay_config_enabled(client, settings, capsys):
     setattr(settings, "GAJO_UTILS_CONFIG", {"REQUEST_DELAY": True})
 
     client.get(reverse("simple_endpoint"))
-
-    print("hey")
 
     assert "Request delay time" in capsys.readouterr().out
 

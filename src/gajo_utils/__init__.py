@@ -12,6 +12,3 @@ DEFAULT_GAJO_UTILS_CONFIG = {
 def get_config():
     USER_CONFIG = getattr(settings, "GAJO_UTILS_CONFIG", {})
     return DEFAULT_GAJO_UTILS_CONFIG | USER_CONFIG
-
-
-config = get_config()
