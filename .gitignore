@@ -13,3 +13,5 @@ dist
 
 dev_app
 db.sqlite3
+
+.coverage

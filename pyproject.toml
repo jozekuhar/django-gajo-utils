@@ -19,12 +19,24 @@ requires-python = '>=3.9'
 dev = [
     'build>=1.2.2',
     'twine>=5.1.1',
+    'pytest-cov>=5.0.0',
     'pytest-django>=4.9.0',
+    'coverage>=7.6.1',
     'ruff>=0.6.4',
 ]
 
 [project.urls]
 Source = 'https://github.com/jozekuhar/django-gajo-utils.git'
+
+[tool.pytest.ini_options]
+addopts = [
+    '--cov=src',
+    '--color=yes'
+]
+pythonpath = '.'
+testpaths = 'tests'
+DJANGO_SETTINGS_MODULE='tests_app.config.settings'
+django_find_project = false
 
 [tool.ruff]
 line-length = 88

@@ -8,10 +8,10 @@ c = Colors()
 
 
 def pretty_print(key, value):
-    if type(value) == dict:
-        print(f'{c.white}{key}: {{{c.reset}')
+    if isinstance(value, dict):
+        print(f"{c.white}{key}: {{{c.reset}")
         for k, v in value.items():
             print(f'    {c.cyan}"{k}": {c.reset}"{v}",')
-        print(f'{c.white}}}{c.reset}')
+        print(f"{c.white}}}{c.reset}")
     else:
         print(f"{c.white}{key}:", f"{c.cyan}{value}{c.reset}")
