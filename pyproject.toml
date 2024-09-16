@@ -23,6 +23,7 @@ dev = [
     'pytest-django>=4.9.0',
     'coverage>=7.6.1',
     'ruff>=0.6.4',
+    'pre-commit>=v3.8.0',
 ]
 
 [project.urls]
@@ -35,7 +36,7 @@ addopts = [
 ]
 pythonpath = '.'
 testpaths = 'tests'
-DJANGO_SETTINGS_MODULE='tests_app.config.settings'
+DJANGO_SETTINGS_MODULE = 'tests_app.config.settings'
 django_find_project = false
 
 [tool.ruff]
