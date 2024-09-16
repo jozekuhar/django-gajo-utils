@@ -4,18 +4,38 @@ from . import views
 
 urlpatterns = [
     path(
-        "simple/",
-        views.simple_endpoint,
-        name="simple_endpoint",
+        "enpoint/",
+        views.endpoint,
+        name="endpoint",
     ),
     path(
-        "simple-with-cookies/",
-        views.simple_endpoint_with_cookies,
-        name="simple_endpoint_with_cookies",
+        "endpoint-with-cookies/",
+        views.endpoint_with_cookies,
+        name="endpoint_with_cookies",
     ),
     path(
-        "simple-with-content/",
-        views.simple_endpoint_with_content,
-        name="simple_endpoint_with_content",
+        "endpoint-with-content/",
+        views.endpoint_with_content,
+        name="endpoint_with_content",
+    ),
+    path(
+        "endpoint_with_all_products_query/",
+        views.endpoint_with_all_products_query,
+        name="endpoint_with_all_products_query",
+    ),
+    path(
+        "endpoint_with_all_products_query_without_prefetch/",
+        views.endpoint_with_all_products_query_without_prefetch,
+        name="endpoint_with_all_products_query_without_prefetch",
+    ),
+    path(
+        "endpoint_with_all_products_query_with_prefetch/",
+        views.endpoint_with_all_products_query_with_prefetch,
+        name="endpoint_with_all_products_query_with_prefetch",
+    ),
+    path(
+        "endpoint_with_timeview_decorator/",
+        views.endpoint_with_timeview_decorator,
+        name="endpoint_with_timeview_decorator",
     ),
 ]

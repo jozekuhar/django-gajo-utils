@@ -1,10 +1,14 @@
+import decimal
 import random
+from collections import defaultdict
+
 import time
 from typing import Callable
 
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from django.conf import settings
+from django.db import connection
 
 from . import get_config
 from .errors import SetupError
@@ -62,4 +66,36 @@ class GajoDebugUtilsMiddleware:
         if self.config.get("RESPONSE_CONTENT"):
             pretty_print("Response content", bytes.decode(response.content))
 
+        if self.config.get("RESPONSE_QUERIES"):
+            queries = connection.queries
+
+            if len(queries) == 0:
+                pretty_print("Response queries", "None")
+            else:
+                total_time = decimal.Decimal(0)
+                total_queries = 0
+                statements = defaultdict(lambda: 0)
+
+                for i, query in enumerate(queries):
+                    query_num = i + 1
+                    query_time = decimal.Decimal(query["time"])
+                    total_time += query_time
+
+                    # Check if multiple similar statements
+                    query_statement = query["sql"]
+                    statements[query_statement.split("WHERE", 1)[0]] += 1
+
+                    total_queries += 1
+                    pretty_print(f"Query statement #{query_num}", query_statement)
+                    pretty_print(f"Query time #{query_num}", f"{query_time}s")
+
+                similar_queries = {
+                    f'{v} time{'s' if v > 1 else ''}': k
+                    for k, v in statements.items()
+                    if v > 1
+                }
+
+                pretty_print("Response queries (total time)", f"{total_time}s")
+                pretty_print("Response queries (similar queries)", similar_queries)
+                pretty_print("Response queries (total queries)", total_queries)
         return response

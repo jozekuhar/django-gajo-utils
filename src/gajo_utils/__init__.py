@@ -6,6 +6,7 @@ DEFAULT_GAJO_UTILS_CONFIG = {
     "REQUEST_COOKIES": False,
     "RESPONSE_COOKIES": False,
     "RESPONSE_CONTENT": False,
+    "RESPONSE_QUERIES": False,
 }
 
 
