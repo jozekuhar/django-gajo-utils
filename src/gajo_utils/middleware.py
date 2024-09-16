@@ -90,7 +90,7 @@ class GajoDebugUtilsMiddleware:
                     pretty_print(f"Query time #{query_num}", f"{query_time}s")
 
                 similar_queries = {
-                    f'{v} time{'s' if v > 1 else ''}': k
+                    f"{v} time{'s' if v > 1 else ''}": k
                     for k, v in statements.items()
                     if v > 1
                 }
