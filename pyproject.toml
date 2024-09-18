@@ -9,9 +9,7 @@ description = 'Utilities for Django project.'
 readme = 'README.md'
 license = { text = 'MIT' }
 authors = [{ name = 'jozekuhar', email = 'joze.kuhar@gajogroup.com' }]
-dependencies = [
-    'Django>=4.2'
-]
+dependencies = [] # Django
 requires-python = '>=3.9'
 
 
